@@ -13,15 +13,16 @@ Pgm::Pgm(int x, int y, int d)
 	}
 }
 
-void Pgm::setPixel(const int x, const int y, const int color)
+Pgm &Pgm::setPixel(const int x, const int y, const int color)
 {
 	if (x > x_ || y > y_ || color > depth_) {
 		throw PgmException("Pgm::setPixel: Value(s) out of range");
 	}
 	image_[x][y] = color;
+	return *this;
 }
 
-void Pgm::incPixel(const int x, const int y)
+Pgm &Pgm::incPixel(const int x, const int y)
 {
 	if (x > x_ || y > y_) {
 		throw PgmException("Pgm::incPixel: Value(s) out of range");
@@ -31,6 +32,7 @@ void Pgm::incPixel(const int x, const int y)
 		throw PgmException("Pgm::incPixel: overexposed!");
 	}
 	image_[x][y] = c+1;
+	return *this;
 }
 
 void Pgm::save(const File &f)

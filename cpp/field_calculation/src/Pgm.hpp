@@ -16,8 +16,8 @@ class Pgm
 {
 	public:
 		Pgm(const int x, const int y, const int depth=0xffff);
-		void setPixel(const int x, const int y, const int color);
-		void incPixel(const int x, const int y);
+		Pgm &setPixel(const int x, const int y, const int color);
+		Pgm &incPixel(const int x, const int y);
 		void save(const File &);
 	private:
 		const int x_;
