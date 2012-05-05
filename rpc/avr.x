@@ -8,6 +8,6 @@ typedef struct input_data input_data;
 
 program AVERAGEPROG {
     version AVERAGEVERS {
-        double AVERAGE(input_data) = 1;
+        double average(input_data) = 1;
     } = 1;
 } = 22855;
