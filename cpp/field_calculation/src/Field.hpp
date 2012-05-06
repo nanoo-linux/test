@@ -17,10 +17,14 @@ class FieldException: public Exception
 class Field
 {
 	public:
-		Field(int x, int y);
+		Field(int x, int y, pair <double, double> mesh);
 		Field &addQ(int x, int y, double voltage);
 		Field &refine(int times=1000);
-		Pgm pgm();
+		pair <int, int> size() const;
+		Pgm pgm() const;
+		const pair <double, double> mesh() const;
+		pair <bool, double> operator()(int x, int y) const;
+		bool refined() const;
 	private:
 		int x_;
 		int y_;
@@ -28,4 +32,5 @@ class Field
 		int min_;
 		bool refined_;
 		vector <vector <pair <bool, double> > > v_;
+		const pair <double, double> mesh_;
 };

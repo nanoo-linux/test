@@ -6,8 +6,8 @@
 
 using std::make_pair;
 
-Field::Field(int x, int y)
-: x_(x), y_(y), refined_(false)
+Field::Field(int x, int y, pair <double, double> mesh)
+: x_(x), y_(y), refined_(false), mesh_(mesh)
 {
 	min_ = 0;
 	max_ = 1;
@@ -55,7 +55,7 @@ Field &Field::refine(int n)
 	return *this;
 }
 
-Pgm Field::pgm()
+Pgm Field::pgm() const
 {
 	if (!refined_) {
 		throw PgmException("Field::image: not refined");
@@ -68,4 +68,27 @@ Pgm Field::pgm()
 		}
 	}
 	return pgm;
+}
+
+std::pair <bool, double> Field::operator ()(int x, int y) const
+{
+	if (x > x_ || y > y_) {
+		throw FieldException("Field::op(): out of range");
+	}
+	return v_[x][y];
+}
+
+std::pair <int, int> Field::size() const
+{
+	return std::make_pair <int, int> (x_, y_);
+}
+
+const std::pair <double, double> Field::mesh() const
+{
+	return mesh_;
+}
+
+bool Field::refined() const
+{
+	return refined_;
 }
