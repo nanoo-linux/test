@@ -15,10 +15,10 @@ class File
 	public:
 		File(const char *);
 		~File();
-		const File &addString(const std::string &) const;
-		const File &addString(const char *) const;
-		const File &addInt(int) const;
-		const File &addLF() const;
+		File &addString(const std::string &);
+		File &addString(const char *);
+		File &addInt(int);
+		File &addLF();
 	private:
 		FILE *file_;
 };

@@ -16,7 +16,7 @@ Geometry::Geometry(const char *file)
 	}
 }
 
-vector <PointCharge> Geometry::points()
+vector <PointCharge> &Geometry::points()
 {
 	return points_;
 }

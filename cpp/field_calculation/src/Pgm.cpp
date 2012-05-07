@@ -37,7 +37,8 @@ Pgm &Pgm::incPixel(const int x, const int y)
 
 void Pgm::save(const File &f)
 {
-	f.addString("P2").addLF().addInt(x_).addLF().addInt(y_).addLF();
+	f.addString("P2").addLF();
+	f.addInt(x_).addLF().addInt(y_).addLF();
 	f.addInt(depth_).addLF();
 	vector <vector <int> > ::reverse_iterator i1;
 	vector <int> ::iterator i2;

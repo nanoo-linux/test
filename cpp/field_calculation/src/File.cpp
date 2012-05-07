@@ -15,25 +15,25 @@ File::~File()
 	fclose(file_);
 }
 
-const File &File::addString(const char *s) const
+File &File::addString(const char *s)
 {
 	fprintf(file_, "%s", s);
 	return *this;
 }
 
-const File &File::addString(const std::string &s) const
+File &File::addString(const std::string &s)
 {
 	return addString(s.c_str());
 }
 
-const File &File::addInt(int a) const
+File &File::addInt(int a)
 {
 	std::stringstream s;
 	s << a;
 	return addString(s.str());
 }
 
-const File &File::addLF() const
+File &File::addLF()
 {
 	return addString("\n");
 }
