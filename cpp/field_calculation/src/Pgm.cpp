@@ -4,7 +4,7 @@ Pgm::Pgm(int x, int y, int d)
 : x_(x), y_(y), depth_(d)
 {
 	if (d > 0xffff) {
-		throw PgmException("Pgm::Pgm: depth is too high");
+		throw PgmException(__FILE__ ":" STR(__LINE__) ":Depth is too high");
 	}
 	image_.reserve(x_);
 	for (int i=0; i<x_; ++i) {
@@ -16,7 +16,7 @@ Pgm::Pgm(int x, int y, int d)
 Pgm &Pgm::setPixel(const int x, const int y, const int color)
 {
 	if (x > x_ || y > y_ || color > depth_) {
-		throw PgmException("Pgm::setPixel: Value(s) out of range");
+		throw PgmException(__FILE__ ":" STR(__LINE__) ":Value(s) out of range");
 	}
 	image_[x][y] = color;
 	return *this;
@@ -25,11 +25,11 @@ Pgm &Pgm::setPixel(const int x, const int y, const int color)
 Pgm &Pgm::incPixel(const int x, const int y)
 {
 	if (x > x_ || y > y_) {
-		throw PgmException("Pgm::incPixel: Value(s) out of range");
+		throw PgmException(__FILE__ ":" STR(__LINE__) ":Value(s) out of range");
 	}
 	int c = image_[x][y];
 	if (c == depth_) {
-		throw PgmException("Pgm::incPixel: overexposed!");
+		throw PgmException(__FILE__ ":" STR(__LINE__) ":Overexposed!");
 	}
 	image_[x][y] = c+1;
 	return *this;

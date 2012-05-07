@@ -6,7 +6,7 @@ File::File(const char *fname)
 {
 	file_ = fopen(fname, "w");
 	if (file_ < 0) {
-		throw FileException("File::File: could not open file to write");
+		throw FileException(__FILE__ ":" STR(__LINE__) ": Could not open file to write");
 	}
 }
 

@@ -24,7 +24,7 @@ Field::Field(int x, int y, pair <double, double> mesh)
 Field &Field::addQ(int x, int y, double p)
 {
 	if (x > x_ || y > y_) {
-		throw FieldException("Field::addQ: out of range");
+		throw FieldException(__FILE__ ":" STR(__LINE__) ": Out of range");
 	}
 	v_[x][y] = make_pair (false, p);
 	if (min_ > p) {
@@ -58,7 +58,7 @@ Field &Field::refine(int n)
 Pgm Field::pgm() const
 {
 	if (!refined_) {
-		throw PgmException("Field::image: not refined");
+		throw PgmException(__FILE__ ":" STR(__LINE__) ": Not refined");
 	}
 	Pgm pgm(x_, y_);
 	double k = 65535./(max_ - min_);
@@ -73,7 +73,7 @@ Pgm Field::pgm() const
 std::pair <bool, double> Field::operator ()(int x, int y) const
 {
 	if (x > x_ || y > y_) {
-		throw FieldException("Field::op(): out of range");
+		throw FieldException(__FILE__ ":" STR(__LINE__) ": Out of range");
 	}
 	return v_[x][y];
 }
