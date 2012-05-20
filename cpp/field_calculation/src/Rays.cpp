@@ -5,8 +5,7 @@
 
 using std::vector;
 
-Rays::Rays(const char *file, double e)
-: charge_(e)
+Rays::Rays(const char *file)
 {
 	try {
 		RFile f(file);
@@ -16,28 +15,29 @@ Rays::Rays(const char *file, double e)
 	}
 }
 
-Rays::Rays(const Ray &r)
-{
-	//TODO:
-}
+Rays::Rays(const Rays &r)
+: rays_(r.rays_)
+{}
 
-vector <Ray> &Rays::ray()
+vector <Ray> &Rays::rays()
 {
 	return rays_;
 }
 
 bool Rays::readOneRay(RFile &f)
 {
+	double x;
+	double y;
+	double phi;
+	double E;
 	try {
-		//TODO:
+		x = f.readDouble();
+		y = f.readDouble();
+		phi = f.readDouble();
+		E = f.readDouble();
 	} catch (RFileException &e) {
 		return false;
 	}
-	rays_.push_back(Ray(/*…*/));
+	rays_.push_back(Ray(x, y, phi, E));
 	return true;
-}
-
-double Rays::charge() const
-{
-	return charge_;
 }

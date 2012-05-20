@@ -35,7 +35,7 @@ Pgm &Pgm::incPixel(const int x, const int y)
 	return *this;
 }
 
-void Pgm::save(const File &f)
+void Pgm::save(File &f)
 {
 	f.addString("P2").addLF();
 	f.addInt(x_).addLF().addInt(y_).addLF();

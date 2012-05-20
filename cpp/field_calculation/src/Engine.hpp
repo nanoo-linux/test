@@ -3,6 +3,7 @@
 #include "Geometry.hpp"
 #include "Exception.hpp"
 #include "Pgm.hpp"
+#include "Rays.hpp"
 #include <vector>
 
 using std::vector;
@@ -16,7 +17,7 @@ class EngineException: public Exception
 class Engine
 {
 	public:
-		Engine(Geometry &, Rays);
+		Engine(Geometry &, Rays &);
 		Engine &simulate();
 		Pgm pgm();
 	private:

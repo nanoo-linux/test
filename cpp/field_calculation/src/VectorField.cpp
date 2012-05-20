@@ -8,10 +8,10 @@ using std::make_pair;
 VectorField::VectorField(const Field &f)
 {
 	if (!f.refined()) {
-		throw VectorFieldException(__FILE__ ":" STR(__LINE__) ":VectorField::VectorField: Field is not refined");
+		throw VectorFieldException(__FILE__ ":" STR(__LINE__) ": Field is not refined");
 	}
 
-	std::pair <int, int> size = f.size();
+	pair <int, int> size = f.size();
 	x_ = size.first -1;
 	y_ = size.second -1;
 	max_ = 0;
@@ -42,7 +42,7 @@ VectorField::VectorField(const Field &f)
 pair <double, double> VectorField::operator ()(int x, int y)
 {
 	if (x > x_ || y > y_) {
-		throw VectorFieldException(__FILE__ ":" STR(__LINE__) ":VectorField::op(): out of range");
+		throw VectorFieldException(__FILE__ ":" STR(__LINE__) ": Out of range");
 	}
 	return v_[x][y];
 }

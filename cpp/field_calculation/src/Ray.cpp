@@ -1,32 +1,57 @@
 #include "Ray.hpp"
+#include <cmath>
 
-Ray::Ray()
-: q_(), vq_()
+/*
+ *
+ *
+ *    ^
+ *    |
+ *    |
+ *    |
+ *    |
+ *    |                              . · ˙
+ *    |                  V     . · ˙
+ *   y|                  . · ˙
+ *    |            . · ˙
+ *    |       . · ˙   \   phi
+ *    | . · ˙         |
+ *    +-------------------------------------------------->
+ *                        x
+ *
+ */
+
+Ray::Ray(double x, double y, double phi, double E)
+: r_(x, y), V_(sqrt(E*2/EMASS)*cos(phi), sqrt(E*2/EMASS)*sin(phi))
 {}
 
-Vector Ray::q() const
+Vector Ray::r() const
 {
-	return q_;
+	return r_;
 }
 
-Vector Ray::vq() const
+Vector Ray::V() const
 {
-	return vq_;
+	return V_;
 }
 
-Ray &Ray::q(Vector &q)
+Ray &Ray::r(Vector &q)
 {
-	q_ = q;
+	r_ = q;
 	return *this;
 }
 
-Ray &Ray::vq(Vector &vq)
+Ray &Ray::V(Vector &V)
 {
-	vq_ = vq;
+	V_ = V;
 	return *this;
 }
 
 Ray &Ray::applyF(Vector &F, double dt)
 {
-	//TODO
+	Vector dV(F);
+	dV *= ECHARGE/EMASS;
+	dV *= dt;
+	V_ += dV;
+	r_ += V_*dt;
+	return *this;
 }

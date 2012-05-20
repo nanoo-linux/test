@@ -18,7 +18,7 @@ class Pgm
 		Pgm(const int x, const int y, const int depth=0xffff);
 		Pgm &setPixel(const int x, const int y, const int color);
 		Pgm &incPixel(const int x, const int y);
-		void save(const File &);
+		void save(File &);
 	private:
 		const int x_;
 		const int y_;

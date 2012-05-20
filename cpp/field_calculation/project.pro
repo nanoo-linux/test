@@ -11,7 +11,11 @@ SOURCES += src/main.cpp \
 		src/VectorField.cpp \
 		src/Geometry.cpp \
 		src/RFile.cpp \
-		src/PointCharge.cpp
+		src/PointCharge.cpp \
+		src/Rays.cpp \
+		src/Ray.cpp \
+		src/Engine.cpp \
+		src/Vector.cpp
 
 HEADERS += src/Pgm.hpp \
 		src/File.hpp \
@@ -21,4 +25,8 @@ HEADERS += src/Pgm.hpp \
 		src/iGeometry.hpp \
 		src/Geometry.hpp \
 		src/RFile.hpp \
-		src/PointCharge.hpp
+		src/PointCharge.hpp \
+		src/Rays.hpp \
+		src/Ray.hpp \
+		src/Engine.hpp \
+		src/Vector.hpp

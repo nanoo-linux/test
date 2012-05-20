@@ -6,6 +6,7 @@ class Vector
 {
 	public:
 		Vector(double x=0, double y=0);
+		Vector(const Vector &);
 		double operator *=(const Vector &) const;
 		Vector &operator *=(double);
 		Vector &operator +=(const Vector &);

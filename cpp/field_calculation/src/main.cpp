@@ -1,12 +1,13 @@
-/*
+
 #include "Engine.hpp"
 #include "Geometry.hpp"
+#include "Rays.hpp"
 
-int m2()
+int main()
 {
 	Geometry g("electrodes.txt");
 	Rays r("rays.txt");
 	Engine e(g, r);
-	e.setGeometry(g).simulate.saveImage(File("dump.pgm"));
+	File out("dump.pgm");
+	e.simulate().pgm().save(out);
 }
-*/

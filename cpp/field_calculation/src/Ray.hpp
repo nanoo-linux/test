@@ -2,16 +2,19 @@
 
 #include "Vector.hpp"
 
+const double EMASS = 9.10938188e10-31;
+const double ECHARGE = -1.6e-19;
+
 class Ray
 {
 	public:
-		Ray();
-		Vector q() const;
-		Vector vq() const;
-		Ray &q(Vector &);
-		Ray &vq(Vector &);
+		Ray(double, double, double, double);
+		Vector r() const;
+		Vector V() const;
+		Ray &r(Vector &);
+		Ray &V(Vector &);
 		Ray &applyF(Vector &, double dt);
 	private:
-		Vector q_;
-		Vector vq_;
+		Vector r_;
+		Vector V_;
 };

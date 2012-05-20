@@ -1,12 +1,10 @@
 #include "Geometry.hpp"
 #include <vector>
 #include "RFile.hpp"
-#include <cstdio>
 
 using std::vector;
 
 Geometry::Geometry(const char *file)
-: iGeometry()
 {
 	try {
 		RFile f(file);

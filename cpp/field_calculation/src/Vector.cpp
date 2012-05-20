@@ -6,6 +6,10 @@ Vector::Vector(double x, double y)
 : x_(x), y_(y)
 {}
 
+Vector::Vector(const Vector &v)
+: x_(v.x_), y_(v.y_)
+{}
+
 double Vector::operator *=(const Vector &v) const
 {
 	return v.x_*x_ + v.y_*y_;
