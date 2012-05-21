@@ -3,11 +3,10 @@
 #include "Field.hpp"
 #include "Exception.hpp"
 #include "Pgm.hpp"
+#include "Vector.hpp"
 #include <vector>
-#include <utility>
 
 using std::vector;
-using std::pair;
 
 class VectorFieldException: public Exception
 {
@@ -19,11 +18,12 @@ class VectorField
 {
 	public:
 		VectorField(const Field &);
-		pair <double, double> operator ()(int, int);
+		Vector operator ()(int, int);
+		Vector operator ()(Vector &);
 		Pgm pgm() const;
 	private:
 		int x_;
 		int y_;
 		double max_;
-		vector <vector <pair <double, double> > > v_;
+		vector <vector <Vector> > v_;
 };

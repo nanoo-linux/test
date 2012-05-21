@@ -2,6 +2,7 @@ TEMPLATE = app
 TARGET = ficmp
 
 CONFIG -= qt
+CONFIG += debug
 OBJECTS_DIR = obj
 
 SOURCES += src/main.cpp \

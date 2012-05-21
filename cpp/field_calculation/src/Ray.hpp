@@ -9,11 +9,11 @@ class Ray
 {
 	public:
 		Ray(double, double, double, double);
-		Vector r() const;
-		Vector V() const;
+		Vector &r();
+		Vector &V();
 		Ray &r(Vector &);
 		Ray &V(Vector &);
-		Ray &applyF(Vector &, double dt);
+		Ray &applyEstaticF(Vector E, double dt);
 	private:
 		Vector r_;
 		Vector V_;

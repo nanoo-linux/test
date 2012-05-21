@@ -1,7 +1,8 @@
 #include "Rays.hpp"
-#include <vector>
 #include "RFile.hpp"
+#include <vector>
 #include <cstdio>
+#include <cmath>
 
 using std::vector;
 
@@ -34,6 +35,7 @@ bool Rays::readOneRay(RFile &f)
 		x = f.readDouble();
 		y = f.readDouble();
 		phi = f.readDouble();
+		phi *= 180/M_PI;
 		E = f.readDouble();
 	} catch (RFileException &e) {
 		return false;

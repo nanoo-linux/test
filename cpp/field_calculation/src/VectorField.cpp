@@ -2,8 +2,6 @@
 #include <cmath>
 
 using std::vector;
-using std::pair;
-using std::make_pair;
 
 VectorField::VectorField(const Field &f)
 {
@@ -22,7 +20,7 @@ VectorField::VectorField(const Field &f)
 	double vx, vy;
 	v_.reserve(x_);
 	for (int i=0; i<x_; ++i) {
-		vector <pair <double, double> > v;
+		vector <Vector> v;
 		for (int j=0; j<y_; ++j) {
 			p = f(i, j);
 			px = f(i+1, j);
@@ -33,13 +31,13 @@ VectorField::VectorField(const Field &f)
 			max_ = t > max_ ? t : max_;
 			max_ = max_ > vx ? max_ : vx;
 			max_ = max_ > vy ? max_ : vy;
-			v.push_back(make_pair(vx, vy));
+			v.push_back(Vector(vx, vy));
 		}
 		v_.push_back(v);
 	}
 }
 
-pair <double, double> VectorField::operator ()(int x, int y)
+Vector VectorField::operator ()(int x, int y)
 {
 	if (x > x_ || y > y_) {
 		throw VectorFieldException(__FILE__ ":" STR(__LINE__) ": Out of range");
@@ -47,14 +45,20 @@ pair <double, double> VectorField::operator ()(int x, int y)
 	return v_[x][y];
 }
 
+Vector VectorField::operator ()(Vector &v)
+{
+	return operator()(v.x(), v.y());
+}
+
+
 Pgm VectorField::pgm() const
 {
 	Pgm pgm(x_, y_);
 	double k = 65535./(max_);
 	for (int i=0; i<x_; ++i) {
 		for (int j=0; j<y_; ++j) {
-			const double a = v_[i][j].first;
-			const double b = v_[i][j].second;
+			const double a = v_[i][j].x();
+			const double b = v_[i][j].y();
 			const double c = sqrt(a*a + b*b);
 			pgm.setPixel(i, j, int(c*k));
 		}

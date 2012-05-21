@@ -8,6 +8,7 @@ Geometry::Geometry(const char *file)
 {
 	try {
 		RFile f(file);
+		readSize(f);
 		while (readOnePoint(f));
 	} catch (RFileException &e) {
 		throw GeometryException(e.what());
@@ -33,4 +34,15 @@ bool Geometry::readOnePoint(RFile &f)
 	}
 	points_.push_back(PointCharge(x, y, c));
 	return true;
+}
+
+void Geometry::readSize(RFile &f)
+{
+	size_.first = f.readInt();
+	size_.second = f.readInt();
+}
+
+std::pair <int, int> Geometry::size() const
+{
+	return size_;
 }

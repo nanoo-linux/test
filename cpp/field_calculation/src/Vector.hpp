@@ -10,6 +10,8 @@ class Vector
 		double operator *=(const Vector &) const;
 		Vector &operator *=(double);
 		Vector &operator +=(const Vector &);
+		double x() const;
+		double y() const;
 		std::string str() const;
 	private:
 		double x_;

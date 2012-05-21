@@ -4,6 +4,7 @@
 #include "Exception.hpp"
 #include "Pgm.hpp"
 #include "Rays.hpp"
+#include "Field.hpp"
 #include <vector>
 
 using std::vector;
@@ -19,10 +20,13 @@ class Engine
 	public:
 		Engine(Geometry &, Rays &);
 		Engine &simulate();
+		Engine &save(File &);
 		Pgm pgm();
 	private:
 		Geometry &g_;
 		Rays &r_;
 		bool simulated_;
-		vector <vector <double> > screen_image_;
+		int screen_x_;
+		vector <long long> screen_;
+		Field prepare_field();
 };
