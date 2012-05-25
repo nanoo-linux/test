@@ -5,6 +5,7 @@
 
 #define STR_(x) #x
 #define STR(x) STR_(x)
+#define HDR __FILE__ "[" STR(__LINE__) "]: "
 
 class Exception: public std::exception
 {

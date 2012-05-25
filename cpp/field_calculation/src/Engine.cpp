@@ -10,7 +10,7 @@
 using std::make_pair;
 using std::pair;
 
-const double dT = 1e-2;
+const double dT = 1e-6;
 
 Engine::Engine(Geometry &g, Rays &r)
 : g_(g), r_(r), screen_x_(g.size().first)
@@ -49,7 +49,7 @@ Engine &Engine::simulate()
 			}
 			++cray;
 		}
-		//usleep(500000);
+		//usleep(50);
 	}
 	return *this;
 }

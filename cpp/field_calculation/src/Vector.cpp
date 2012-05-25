@@ -39,10 +39,16 @@ double operator *(const Vector &v, const Vector &w)
 	return Vector(v) *= w;
 }
 
+Vector operator *(const Vector &v, double d)
+{
+	return Vector(v) *= d;
+}
+
 std::string Vector::str() const
 {
 	std::stringstream s;
-	s << "<" << x_ << ":" << y_ << ">";
+	//s << "<" << x_ << ":" << y_ << ">";
+	s << x_ << "\t" << y_ ;
 	return s.str();
 }
 

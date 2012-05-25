@@ -6,7 +6,7 @@ using std::vector;
 VectorField::VectorField(const Field &f)
 {
 	if (!f.refined()) {
-		throw VectorFieldException(__FILE__ ":" STR(__LINE__) ": Field is not refined");
+		throw VectorFieldException(HDR "Field is not refined");
 	}
 
 	pair <int, int> size = f.size();
@@ -40,7 +40,7 @@ VectorField::VectorField(const Field &f)
 Vector VectorField::operator ()(int x, int y)
 {
 	if (x > x_ || y > y_) {
-		throw VectorFieldException(__FILE__ ":" STR(__LINE__) ": Out of range");
+		throw VectorFieldException(HDR "Out of range");
 	}
 	return v_[x][y];
 }

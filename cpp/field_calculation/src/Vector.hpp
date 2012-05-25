@@ -20,3 +20,4 @@ class Vector
 
 Vector operator +(const Vector &, const Vector &);
 double operator *(const Vector &, const Vector &);
+Vector operator *(const Vector &, double);

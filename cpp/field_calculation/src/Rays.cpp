@@ -30,16 +30,17 @@ bool Rays::readOneRay(RFile &f)
 	double x;
 	double y;
 	double phi;
-	double E;
+	double nrg;
 	try {
 		x = f.readDouble();
 		y = f.readDouble();
 		phi = f.readDouble();
-		phi *= 180/M_PI;
-		E = f.readDouble();
+		phi *= M_PI/180;
+		nrg = f.readDouble(); //[eV]
+		nrg *= ECHARGE;
 	} catch (RFileException &e) {
 		return false;
 	}
-	rays_.push_back(Ray(x, y, phi, E));
+	rays_.push_back(Ray(x, y, phi, nrg));
 	return true;
 }

@@ -7,7 +7,7 @@ RFile::RFile(const char *filename)
 {
 	file_ = fopen(filename, "r");
 	if (file_ == NULL) {
-		throw RFileException(__FILE__ ":" STR(__LINE__) ": Could not open file to read");
+		throw RFileException(HDR "Could not open file to read");
 	}
 }
 
@@ -25,7 +25,7 @@ std::string RFile::readString()
 		free(bytes);
 		return s;
 	} else {
-		throw RFileException(__FILE__ ":" STR(__LINE__) ": Could not read string");
+		throw RFileException(HDR "Could not read string");
 	}
 }
 
@@ -36,7 +36,7 @@ int RFile::readInt()
 	if (n == 1) {
 		return ret;
 	} else {
-		throw RFileException(__FILE__ ":" STR(__LINE__) ": Could not read int");
+		throw RFileException(HDR "Could not read int");
 	}
 }
 
@@ -47,7 +47,7 @@ double RFile::readDouble()
 	if (n == 1) {
 		return ret;
 	} else {
-		throw RFileException(__FILE__ ":" STR(__LINE__) ": Could not read double");
+		throw RFileException(HDR "Could not read double");
 	}
 }
 
