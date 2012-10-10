@@ -33,6 +33,8 @@ static const char *RcsId = "$Id:  $";
 #include <StateScanner.h>
 #include <StateScannerClass.h>
 
+#include "Machine.hpp"
+
 /*----- PROTECTED REGION END -----*/
 
 
@@ -149,7 +151,7 @@ void StateScanner::init_device()
 	attr_Spectrum_read = new Tango::DevDouble[2048];
 	
 	/*----- PROTECTED REGION ID(StateScanner::init_device) ENABLED START -----*/
-	machine_.reset(new Machine);
+	machine_.reset(new Machine(std::string(), std::string(), this));
 	//	Initialize device
 
 	/*----- PROTECTED REGION END -----*/	//	StateScanner::init_device
@@ -207,7 +209,7 @@ void StateScanner::read_Delta1(Tango::Attribute &attr)
 	DEBUG_STREAM << "StateScanner::read_Delta1(Tango::Attribute &attr) entering... " << endl;
 	/*----- PROTECTED REGION ID(StateScanner::read_Delta1) ENABLED START -----*/
 	pData d = machine_->data();
-	attr_Dalta1_read[0] = d->delta1;
+	attr_Delta1_read[0] = d->delta1;
 
 	//	Set the attribute value
 	attr.set_value(attr_Delta1_read);

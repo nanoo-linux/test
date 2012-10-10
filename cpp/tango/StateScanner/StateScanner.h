@@ -33,6 +33,7 @@
 
 #include <memory>
 
+class Machine;
 /*----- PROTECTED REGION END -----*/
 
 
@@ -46,7 +47,6 @@ namespace StateScanner_ns
 	/*----- PROTECTED REGION ID(StateScanner::Additional Class Declarations) ENABLED START -----*/
 
 		//		Additional Class Declarations
-class Machine;
 
 	/*----- PROTECTED REGION END -----*/	//	StateScanner::Additional Class Declarations
 

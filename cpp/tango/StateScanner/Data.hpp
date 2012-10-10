@@ -3,8 +3,8 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <tango.h>
 
-class Tango::DeviceProxy;
 class StateScanner;
 
 class Data

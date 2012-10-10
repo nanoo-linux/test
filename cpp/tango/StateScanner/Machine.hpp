@@ -11,7 +11,7 @@ class StateScanner;
 class Machine
 {
 	public:
-		Machine(std::string, std::string, StateScanner *);
+		Machine(std::string, std::string, StateScanner_ns::StateScanner *);
 		void do_target();
 		bool finished();
 		void do_start();

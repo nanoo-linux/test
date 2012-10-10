@@ -4,7 +4,7 @@
 #include "Data.hpp"
 
 class State;
-typedef std::tr1::shared_ptr <State> pState;
+typedef std::shared_ptr <State> pState;
 
 class State
 {
